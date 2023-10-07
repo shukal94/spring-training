@@ -8,6 +8,10 @@ public class NonThreadSafeOrderValidator {
 
     private final AtomicInteger invokedCount = new AtomicInteger();
 
+    public NonThreadSafeOrderValidator() {
+        log.info("NonThreadSafeOrderValidator created");
+    }
+
     public boolean isValid() {
         invokedCount.incrementAndGet();
 
