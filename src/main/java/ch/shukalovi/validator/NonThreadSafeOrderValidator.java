@@ -10,6 +10,11 @@ public class NonThreadSafeOrderValidator {
 
     public boolean isValid() {
         invokedCount.incrementAndGet();
+
+        if (invokedCount.get() == 2) {
+            throw new IllegalStateException("NonThreadSafeOrderValidator called twice!");
+        }
+
         log.info("NonThreadSafeOrderValidator invoked {} times", invokedCount.get());
         return true;
     }
