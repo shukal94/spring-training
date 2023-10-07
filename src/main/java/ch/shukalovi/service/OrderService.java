@@ -19,6 +19,7 @@ public class OrderService {
             log.info("Order {} was created.", order);
             return order;
         }
+
         throw new OrderCreationException(String.format("Order %s is not valid!", order));
     }
 }

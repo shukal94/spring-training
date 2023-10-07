@@ -7,8 +7,10 @@
     <bean class="ch.shukalovi.service.OrderService">
         <constructor-arg ref="orderValidator" />
     </bean>
-    <bean id = "orderValidator" class="ch.shukalovi.validator.OrderValidator">
+    <bean id="orderValidator" class="ch.shukalovi.validator.OrderValidator">
         <property name="minOrderNo" value="100" />
+        <constructor-arg ref="ntsov" />
     </bean>
+    <bean id="ntsov" class="ch.shukalovi.validator.NonThreadSafeOrderValidator" scope="prototype"/>
 
 </beans>
