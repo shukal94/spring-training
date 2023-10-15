@@ -1,4 +1,4 @@
-package ch.shukalovi.annotations;
+package ch.shukalovi.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

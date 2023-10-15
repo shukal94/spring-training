@@ -1,13 +1,11 @@
-package ch.shukalovi.annotations.processor;
+package ch.shukalovi.annotation.processor;
 
-import ch.shukalovi.annotations.Trace;
+import ch.shukalovi.annotation.Trace;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
