@@ -7,9 +7,9 @@
     <bean class="ch.shukalovi.service.OrderService" init-method="init" destroy-method="destroy" autowire="constructor">
 <!--        <constructor-arg ref="orderValidator" />-->
     </bean>
-    <bean id="orderValidator" class="ch.shukalovi.validator.OrderValidator" autowire="constructor">
-        <property name="minOrderNo" value="100" />
-    </bean>
+<!--    <bean id="orderValidator" class="ch.shukalovi.validator.OrderValidator" autowire="constructor">-->
+<!--        <property name="minOrderNo" value="100" />-->
+<!--    </bean>-->
     <bean id="ntsov" class="ch.shukalovi.validator.NonThreadSafeOrderValidator" scope="prototype"/>
 
 </beans>
