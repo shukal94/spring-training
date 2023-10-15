@@ -1,5 +1,6 @@
 package ch.shukalovi.service;
 
+import ch.shukalovi.annotations.Trace;
 import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
