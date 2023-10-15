@@ -15,11 +15,11 @@ public class OrderService {
 
     }
 
-    public void init() {
+    private void init() {
         log.info("Order Service init.");
     }
 
-    public void destroy() {
+    private void destroy() {
         log.info("Order Service destroy.");
     }
 
