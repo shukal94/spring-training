@@ -4,7 +4,7 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="ch.shukalovi.service.OrderService">
+    <bean class="ch.shukalovi.service.OrderService" init-method="init" destroy-method="destroy">
         <constructor-arg ref="orderValidator" />
     </bean>
     <bean id="orderValidator" class="ch.shukalovi.validator.OrderValidator" autowire="constructor">

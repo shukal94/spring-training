@@ -12,6 +12,15 @@ public class OrderService {
     public OrderService(OrderValidator validator) {
         this.validator = validator;
         log.info("Order Service created.");
+
+    }
+
+    public void init() {
+        log.info("Order Service init.");
+    }
+
+    public void destroy() {
+        log.info("Order Service destroy.");
     }
 
     public Order createOrder(Order order) {
