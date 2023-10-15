@@ -4,25 +4,26 @@ import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 @Slf4j
 public class OrderService {
     private final List<OrderValidator> validators;
 
-    @Autowired
     public OrderService(List<OrderValidator> validators) {
         this.validators = validators;
         log.info("Order Service created.");
 
     }
 
+    @PostConstruct
     private void init() {
         log.info("Order Service init.");
     }
 
+    @PreDestroy
     private void destroy() {
         log.info("Order Service destroy.");
     }

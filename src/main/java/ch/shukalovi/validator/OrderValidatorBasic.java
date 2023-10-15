@@ -3,7 +3,6 @@ package ch.shukalovi.validator;
 import ch.shukalovi.annotation.Trace;
 import ch.shukalovi.model.Order;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.inject.Provider;
 
@@ -14,7 +13,6 @@ public class OrderValidatorBasic implements OrderValidator {
 
     private final Provider<NonThreadSafeOrderValidator> ntsov;
 
-    @Autowired
     public OrderValidatorBasic(Provider<NonThreadSafeOrderValidator> ntsov) {
         this.ntsov = ntsov;
     }
