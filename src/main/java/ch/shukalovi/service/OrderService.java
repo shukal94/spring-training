@@ -5,12 +5,14 @@ import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @Slf4j
 public class OrderService {
-    private final OrderValidator validator;
+    private final List<OrderValidator> validators;
 
-    public OrderService(OrderValidator validator) {
-        this.validator = validator;
+    public OrderService(List<OrderValidator> validators) {
+        this.validators = validators;
         log.info("Order Service created.");
 
     }
@@ -24,7 +26,7 @@ public class OrderService {
     }
 
     public Order createOrder(Order order) {
-        if (validator.isOrderNoValid(order)) {
+        if (validators.stream().allMatch(ov -> ov.isOrderValid(order))) {
             log.info("Order {} was created.", order);
             return order;
         }
