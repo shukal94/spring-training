@@ -2,13 +2,19 @@ package ch.shukalovi;
 
 import ch.shukalovi.model.Order;
 import ch.shukalovi.service.OrderService;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.SimpleThreadScope;
 
 public class App {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"beans/services.xml"});
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.registerShutdownHook();
+        ctx.scan("ch.shukalovi");
+        new XmlBeanDefinitionReader(ctx).loadBeanDefinitions("beans/services.xml");
+        ctx.refresh();
+
         OrderService service = ctx.getBean(OrderService.class);
         ctx.getBean(OrderService.class);
         ctx.getBean(OrderService.class);
