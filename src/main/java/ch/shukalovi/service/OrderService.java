@@ -23,7 +23,7 @@ import java.util.List;
 public class OrderService {
     private final OrderValidator validator;
 
-    public OrderService(@Qualifier("main") OrderValidator validator) {
+    public OrderService(@Qualifier("orderValidatorBasic") OrderValidator validator) {
         this.validator = validator;
         log.info("Order Service created.");
 

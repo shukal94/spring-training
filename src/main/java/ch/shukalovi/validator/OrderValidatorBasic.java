@@ -9,7 +9,7 @@ import javax.inject.Provider;
 
 @Slf4j
 @Trace
-@Qualifier("main")
+//@Qualifier("main")
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNo;
 
