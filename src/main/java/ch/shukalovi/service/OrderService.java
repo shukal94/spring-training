@@ -16,7 +16,10 @@ import javax.annotation.PreDestroy;
  * after the bean creation
  * Lifecycle note: bean is being created first, annotations are bean post-processors, which are working after bean created
  * Autowiring for constructor params is not required!!!
- *
+ * @Controller - in Spring Web handles requests
+ * @Component - bean definition
+ * @Service - alias for @Component, used to mark business service, service = component
+ * @Repository - equal to @Component, but has exception translation from different DBMS's, unifies DB exceptions to Spring exceptions
  */
 @Slf4j
 @Component
