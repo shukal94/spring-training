@@ -1,17 +1,13 @@
 package ch.shukalovi.service;
 
-import ch.shukalovi.annotation.BeanDefinition;
-import ch.shukalovi.annotation.Main;
 import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.List;
 
 /**
  * JDK Proxy won't work, need at least one interface to be implemented
@@ -23,7 +19,7 @@ import java.util.List;
  *
  */
 @Slf4j
-@BeanDefinition
+@Component
 public class OrderService {
     private final OrderValidator validator;
 

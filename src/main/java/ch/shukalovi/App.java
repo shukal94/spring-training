@@ -12,23 +12,20 @@ public class App {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.registerShutdownHook();
         ctx.scan("ch.shukalovi");
-        new XmlBeanDefinitionReader(ctx).loadBeanDefinitions("beans/services.xml");
         ctx.refresh();
 
         OrderService service = ctx.getBean(OrderService.class);
-        ctx.getBean(OrderService.class);
-        ctx.getBean(OrderService.class);
-        ctx.getBean(OrderService.class);
-//        service.createOrder(new Order(800));
-//        service.createOrder(new Order(801));
-//        service.createOrder(new Order(802));
-//
-//        System.exit(1);
-//
-//        service.createOrder(new Order(803));
-//        service.createOrder(new Order(804));
-//        service.createOrder(new Order(805));
-//
-//        ctx.close();
+
+        service.createOrder(new Order(800));
+        service.createOrder(new Order(801));
+        service.createOrder(new Order(802));
+
+        System.exit(1);
+
+        service.createOrder(new Order(803));
+        service.createOrder(new Order(804));
+        service.createOrder(new Order(805));
+
+        ctx.close();
     }
 }
