@@ -10,6 +10,12 @@ import java.util.List;
 
 /**
  * JDK Proxy won't work, need at least one interface to be implemented
+ * if we define init-method and destroy method in XML, we modify bean definition, bean will be created with those hooks
+ * if we use @PostConstruct, @PreDestroy - we just create bean WITHOUT hooks and use standard bean postprocessor
+ * after the bean creation
+ * Lifecycle note: bean is being created first, annotations are bean post-processors, which are working after bean created
+ * Autowiring for constructor params is not required!!!
+ *
  */
 @Slf4j
 public class OrderService {
