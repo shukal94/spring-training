@@ -24,6 +24,8 @@ import java.util.List;
 public class OrderService {
     private final OrderValidator validator;
 
+    private String prop;
+
     public OrderService(OrderValidator validator) {
         this.validator = validator;
         log.info("Order Service created.");
@@ -32,7 +34,7 @@ public class OrderService {
 
     @PostConstruct
     private void init() {
-        log.info("Order Service init.");
+        log.info("Order Service init. {}", prop);
     }
 
     @PreDestroy
@@ -47,5 +49,9 @@ public class OrderService {
         }
 
         throw new OrderCreationException(String.format("Order %s is not valid!", order));
+    }
+
+    public void setProp(String prop) {
+        this.prop = prop;
     }
 }
