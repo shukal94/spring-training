@@ -10,16 +10,19 @@ public class App {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"beans/services.xml"});
         ctx.registerShutdownHook();
         OrderService service = ctx.getBean(OrderService.class);
-        service.createOrder(new Order(800));
-        service.createOrder(new Order(801));
-        service.createOrder(new Order(802));
-
-        System.exit(1);
-
-        service.createOrder(new Order(803));
-        service.createOrder(new Order(804));
-        service.createOrder(new Order(805));
-
-        ctx.close();
+        ctx.getBean(OrderService.class);
+        ctx.getBean(OrderService.class);
+        ctx.getBean(OrderService.class);
+//        service.createOrder(new Order(800));
+//        service.createOrder(new Order(801));
+//        service.createOrder(new Order(802));
+//
+//        System.exit(1);
+//
+//        service.createOrder(new Order(803));
+//        service.createOrder(new Order(804));
+//        service.createOrder(new Order(805));
+//
+//        ctx.close();
     }
 }

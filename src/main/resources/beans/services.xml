@@ -18,5 +18,6 @@
     <bean id="orderValidatorExtended" class="ch.shukalovi.validator.OrderValidatorExtended" />
     <bean id="ntsov" class="ch.shukalovi.validator.NonThreadSafeOrderValidator" scope="prototype"/>
     <bean class="ch.shukalovi.annotation.processor.TraceBeanPostProcessor" />
+    <bean class="ch.shukalovi.config.PrototypeByDefaultBeanFactoryPostProcessor" />
 
 </beans>
