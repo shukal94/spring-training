@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * No business logic here, infrastructure only
+ */
 @Slf4j
 public class TraceBeanPostProcessor implements BeanPostProcessor, Ordered {
     Set<String> beansToProcess = new HashSet<>();

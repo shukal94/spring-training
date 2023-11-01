@@ -8,6 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
+/**
+ * JDK Proxy won't work, need at least one interface to be implemented
+ */
 @Slf4j
 public class OrderService {
     private final List<OrderValidator> validators;
