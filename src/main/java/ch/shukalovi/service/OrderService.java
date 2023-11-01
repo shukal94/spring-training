@@ -4,6 +4,8 @@ import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +25,7 @@ import javax.annotation.PreDestroy;
  */
 @Slf4j
 @Component
+@PropertySource("app.properties")
 public class OrderService {
     private final OrderValidator validator;
 
@@ -53,6 +56,7 @@ public class OrderService {
         throw new OrderCreationException(String.format("Order %s is not valid!", order));
     }
 
+    @Value("${prop1}")
     public void setProp(String prop) {
         this.prop = prop;
     }
