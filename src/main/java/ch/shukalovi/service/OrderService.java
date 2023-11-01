@@ -1,5 +1,6 @@
 package ch.shukalovi.service;
 
+import ch.shukalovi.annotation.Main;
 import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
@@ -23,7 +24,7 @@ import java.util.List;
 public class OrderService {
     private final OrderValidator validator;
 
-    public OrderService(@Qualifier("orderValidatorBasic") OrderValidator validator) {
+    public OrderService(@Main OrderValidator validator) {
         this.validator = validator;
         log.info("Order Service created.");
 

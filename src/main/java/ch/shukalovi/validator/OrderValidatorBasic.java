@@ -1,5 +1,6 @@
 package ch.shukalovi.validator;
 
+import ch.shukalovi.annotation.Main;
 import ch.shukalovi.annotation.Trace;
 import ch.shukalovi.model.Order;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,7 @@ import javax.inject.Provider;
 
 @Slf4j
 @Trace
-//@Qualifier("main")
+@Main
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNo;
 
