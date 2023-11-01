@@ -24,7 +24,7 @@ import java.util.List;
 public class OrderService {
     private final OrderValidator validator;
 
-    public OrderService(@Main OrderValidator validator) {
+    public OrderService(OrderValidator validator) {
         this.validator = validator;
         log.info("Order Service created.");
 

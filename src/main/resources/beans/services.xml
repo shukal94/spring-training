@@ -11,7 +11,8 @@
 
     <context:annotation-config />
     <bean class="ch.shukalovi.service.OrderService" />
-    <bean id="orderValidatorBasic" class="ch.shukalovi.validator.OrderValidatorBasic">
+    <bean id="orderValidatorBasic" class="ch.shukalovi.validator.OrderValidatorBasic" primary="true">
+<!--        primary is not post-processor, it should be in bean definition-->
         <property name="minOrderNo" value="100" />
     </bean>
     <bean id="orderValidatorExtended" class="ch.shukalovi.validator.OrderValidatorExtended" />
