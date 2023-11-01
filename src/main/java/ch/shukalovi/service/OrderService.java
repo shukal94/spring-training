@@ -4,6 +4,8 @@ import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
@@ -19,10 +21,10 @@ import java.util.List;
  */
 @Slf4j
 public class OrderService {
-    private final List<OrderValidator> validators;
+    private final OrderValidator validator;
 
-    public OrderService(List<OrderValidator> validators) {
-        this.validators = validators;
+    public OrderService(@Qualifier("main") OrderValidator validator) {
+        this.validator = validator;
         log.info("Order Service created.");
 
     }
@@ -38,7 +40,7 @@ public class OrderService {
     }
 
     public Order createOrder(Order order) {
-        if (validators.stream().allMatch(ov -> ov.isOrderValid(order))) {
+        if (validator.isOrderValid(order)) {
             log.info("Order {} was created.", order);
             return order;
         }
