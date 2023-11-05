@@ -15,8 +15,7 @@ public class App {
         ctx.refresh();
 
         OrderService service = ctx.getBean(OrderService.class);
-        ctx.getBean(OrderService.class);
-        ctx.getBean(OrderService.class);
+        service.getValidator().testBPP();
 
         service.createOrder(new Order(800));
         service.createOrder(new Order(801));

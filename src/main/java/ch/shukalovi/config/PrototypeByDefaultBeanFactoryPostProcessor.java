@@ -14,7 +14,7 @@ import java.util.Objects;
  * We cannot inject any bean, beans are being created later, like we can use non-static objects in static methods.
  * Again, spring wasn't started here
  */
-@Component
+//@Component
 public class PrototypeByDefaultBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {

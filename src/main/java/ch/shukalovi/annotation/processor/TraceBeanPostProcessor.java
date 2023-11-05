@@ -14,6 +14,7 @@ import java.util.Set;
 
 /**
  * No business logic here, infrastructure only
+ * will trace interface methods ONLY!!! Proxy could be casted to the interface type, but not for its implementations
  */
 @Slf4j
 @Component

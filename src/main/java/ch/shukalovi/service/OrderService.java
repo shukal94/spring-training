@@ -7,11 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-/**
+/***
  * JDK Proxy won't work, need at least one interface to be implemented
  * if we define init-method and destroy method in XML, we modify bean definition, bean will be created with those hooks
  * if we use @PostConstruct, @PreDestroy - we just create bean WITHOUT hooks and use standard bean postprocessor
@@ -22,10 +23,11 @@ import javax.annotation.PreDestroy;
  * @Component - bean definition
  * @Service - alias for @Component, used to mark business service, service = component
  * @Repository - equal to @Component, but has exception translation from different DBMS's, unifies DB exceptions to Spring exceptions
+ * using annotation-based config we can create only ONE bean, @see ch.shukalovi.config.ApplicationConfig how to resolve 1 definition - N beans relation
+ * also we cannot modify the external classes if we want to use those as beans,  @see ch.shukalovi.config.ApplicationConfig how to resolve it
  */
 @Slf4j
-@Component
-@PropertySource("app.properties")
+//@Service
 public class OrderService {
     private final OrderValidator validator;
 
@@ -59,5 +61,9 @@ public class OrderService {
     @Value("${prop1}")
     public void setProp(String prop) {
         this.prop = prop;
+    }
+
+    public OrderValidator getValidator() {
+        return validator;
     }
 }
