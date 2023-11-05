@@ -10,11 +10,13 @@ import org.springframework.context.support.SimpleThreadScope;
 
 public class App {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        // new AnnotationConfigApplicationContext(ApplicationConfig.class); an old API, refreshes
         ctx.registerShutdownHook();
-        //ctx.register(ApplicationConfig.class);
-        //ctx.scan("ch.shukalovi");
-        //ctx.refresh();
+        ctx.register(ApplicationConfig.class);
+        ctx.getEnvironment().addActiveProfile("test");
+        ctx.scan("ch.shukalovi");
+        ctx.refresh();
 
         OrderService service = ctx.getBean(OrderService.class);
         service.getValidator().testBPP();

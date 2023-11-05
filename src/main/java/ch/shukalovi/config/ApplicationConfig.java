@@ -15,19 +15,10 @@ import org.springframework.context.annotation.*;
  * requests scope, and if there's no bean, creates it and returns (for singleton and @Component annotated only)
  * CGLIBProxy::basicValidator() called, not ApplicationConfig::basicValidator()
  */
+@Profile("!test")
 @Configuration
 @PropertySource("app.properties")
-@ComponentScan(basePackages = {"ch.shukalovi"})
 public class ApplicationConfig {
-
-    @Bean
-    public OrderService orderService() {
-
-        basicValidator();
-        basicValidator();
-        basicValidator();
-        return new OrderService(basicValidator());
-    }
 
     /**
      * OrderValidatorBasic should NOT be annotated as @Component
