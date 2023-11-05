@@ -1,4 +1,4 @@
-package ch.shukalovi.config;
+package ch.shukalovi.annotation.processor;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;

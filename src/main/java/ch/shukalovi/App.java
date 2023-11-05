@@ -1,5 +1,6 @@
 package ch.shukalovi;
 
+import ch.shukalovi.config.ApplicationConfig;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.service.OrderService;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -9,10 +10,11 @@ import org.springframework.context.support.SimpleThreadScope;
 
 public class App {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         ctx.registerShutdownHook();
-        ctx.scan("ch.shukalovi");
-        ctx.refresh();
+        //ctx.register(ApplicationConfig.class);
+        //ctx.scan("ch.shukalovi");
+        //ctx.refresh();
 
         OrderService service = ctx.getBean(OrderService.class);
         service.getValidator().testBPP();

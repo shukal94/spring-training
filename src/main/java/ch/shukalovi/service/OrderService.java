@@ -27,7 +27,8 @@ import javax.annotation.PreDestroy;
  * also we cannot modify the external classes if we want to use those as beans,  @see ch.shukalovi.config.ApplicationConfig how to resolve it
  */
 @Slf4j
-//@Service
+@Service
+//@Service - if we leave this annotation there will be 2 bean definitions - annotation and java - based
 public class OrderService {
     private final OrderValidator validator;
 
