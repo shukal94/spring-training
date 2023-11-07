@@ -11,4 +11,12 @@
         <property name="minOrderNo" value="100" />
     </bean>
 
+    <bean id = "orderValidator" class="ch.shukalovi.validator.OrderValidator">
+        <property name="minOrderNo" value="100" />
+    </bean>
+
+    <bean id="customThreadScope" class="apetsora.driver.CustomThreadScope" />
+
+    <bean id="webDriverManager" class="apetsora.driver.WebDriverManager" scope="customThreadScope" />
+
 </beans>
