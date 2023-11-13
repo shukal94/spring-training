@@ -59,7 +59,7 @@ public class OrderService {
         throw new OrderCreationException(String.format("Order %s is not valid!", order));
     }
 
-    @Value("${prop1}")
+    @Value("${prop1:default}")
     public void setProp(String prop) {
         this.prop = prop;
     }
