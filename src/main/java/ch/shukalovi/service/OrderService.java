@@ -4,13 +4,19 @@ import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /***
  * JDK Proxy won't work, need at least one interface to be implemented
@@ -33,6 +39,9 @@ public class OrderService {
     private final OrderValidator validator;
 
     private String prop;
+
+    @Value("classpath:file.txt")
+    private Resource resource;
 
     public OrderService(OrderValidator validator) {
         this.validator = validator;
@@ -66,5 +75,13 @@ public class OrderService {
 
     public OrderValidator getValidator() {
         return validator;
+    }
+
+    public void readResource() {
+        try (InputStream inputStream = resource.getInputStream()) {
+            System.out.println(IOUtils.readLines(inputStream, StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
