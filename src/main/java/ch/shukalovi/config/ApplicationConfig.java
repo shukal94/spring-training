@@ -17,7 +17,10 @@ import org.springframework.context.annotation.*;
  */
 @Profile("!test")
 @Configuration
-@PropertySource("app.properties")
+@PropertySource("classpath:app.properties")
+@PropertySource("classpath:app.properties")
+@PropertySource("classpath:app.properties")
+@PropertySource("classpath:app.properties")
 public class ApplicationConfig {
 
     /**
