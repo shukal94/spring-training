@@ -24,14 +24,6 @@ public class App {
         service.getValidator().testBPP();
 
         service.createOrder(new Order(800));
-        service.createOrder(new Order(801));
-        service.createOrder(new Order(802));
-
-        System.exit(1);
-
-        service.createOrder(new Order(803));
-        service.createOrder(new Order(804));
-        service.createOrder(new Order(805));
 
         ctx.close();
     }

@@ -1,15 +1,14 @@
 package ch.shukalovi.service;
 
+import ch.shukalovi.event.OrderCreatedEvent;
 import ch.shukalovi.exceptions.OrderCreationException;
 import ch.shukalovi.model.Order;
 import ch.shukalovi.validator.OrderValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -43,8 +42,11 @@ public class OrderService {
     @Value("classpath:file.txt")
     private Resource resource;
 
-    public OrderService(OrderValidator validator) {
+    private final ApplicationEventPublisher eventPublisher;
+
+    public OrderService(OrderValidator validator, ApplicationEventPublisher eventPublisher) {
         this.validator = validator;
+        this.eventPublisher = eventPublisher;
         log.info("Order Service created.");
 
     }
@@ -62,6 +64,7 @@ public class OrderService {
     public Order createOrder(Order order) {
         if (validator.isOrderValid(order)) {
             log.info("Order {} was created.", order);
+            eventPublisher.publishEvent(new OrderCreatedEvent(order.orderNo()));
             return order;
         }
 
