@@ -5,13 +5,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * No business logic here, infrastructure only
+ * will trace interface methods ONLY!!! Proxy could be casted to the interface type, but not for its implementations
+ */
 @Slf4j
+@Component
 public class TraceBeanPostProcessor implements BeanPostProcessor, Ordered {
     Set<String> beansToProcess = new HashSet<>();
 
